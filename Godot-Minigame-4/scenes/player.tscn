@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyj54usnh5n82"]
+[gd_scene load_steps=7 format=3 uid="uid://dyj54usnh5n82"]
 
 [ext_resource type="Script" uid="uid://dbr4iqrc0n2uk" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://w3p6fdp1q6jk" path="res://scenes/ball.tscn" id="2_g2els"]
+[ext_resource type="Script" uid="uid://cbfcix635yjpq" path="res://scenes/ball.gd" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sgp6g"]
 
@@ -14,13 +15,13 @@ albedo_color = Color(0.31171086, 0.57065874, 0.9465762, 1)
 collision_mask = 14
 script = ExtResource("1_3vyb7")
 throwPower = 15.0
-jump = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_sgp6g")
 
 [node name="Ball" parent="." instance=ExtResource("2_g2els")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0345353, 0.26025307, -0.4768666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.035, 0, 0)
+script = ExtResource("3_qhqgy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_g2els")
