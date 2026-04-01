@@ -8,6 +8,7 @@ extends CharacterBody3D
 
 var ball
 var points: int = 0
+
 # step 2: uncomment the function below
 func _ready() -> void:
 	# step 3: find the ball Node
@@ -36,13 +37,11 @@ func _physics_process(delta: float) -> void:
 
 	# step 8: uncomment the code below to handle collisions
 	
-
 	var collision_info = move_and_collide(velocity * delta, true)
 	if collision_info:
 		var obj = collision_info.get_collider()
 		if obj is Ball:
 			# step 9: add if statement here
-	
 			if obj.on_ground:
 				_pickup_ball(obj)
 			else:
@@ -54,10 +53,11 @@ func _physics_process(delta: float) -> void:
 
 
 # step 6: uncomment the function below
+
 func _hit(obj: Ball) -> void:
 	points -= 1
 	print(points)
-	
+
 
 # delete the ball
 	obj.queue_free()
@@ -94,7 +94,7 @@ func _throw_ball() -> void:
 	ball.set_global_position(originalPos)
 	
 	# throw ball
-	ball._throw(throwPower, -1)
+	ball._throw(throwPower, -10)
 
 	# let go of our reference to the ball
 	ball = null
