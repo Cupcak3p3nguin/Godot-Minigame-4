@@ -5,7 +5,7 @@ extends RigidBody3D
 @export var throwPower: float = 1.0
 @export var speed: float = 1.0
 @export var maxDistance: float = 2.0
-@export var throwFrequency: float = 3.0
+@export var throwFrequency: float = 1.0
 
 @onready var ballScene = preload("res://scenes/ball.tscn")
 
@@ -15,14 +15,13 @@ var distance: float = 0.0
 var xDir: float = 1.0
 
 var points: int = 0
+
 # step 13: add a time variale
 
 var _timer: float = 0.0
 
 
-# step 4: uncomment the function below
-
-
+# step 4: uncomment the function below.
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 3
@@ -32,7 +31,7 @@ func _ready() -> void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	var movement = speed * delta
 	position.x += movement * xDir
 	
@@ -45,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	# when the timer runs out, have the NPC throw a ball
 
 	_timer += delta
-	if _timer > throwFrequency:
+	if _timer >= throwFrequency:
 		_throw_ball()
 		_timer = 0.0
 
@@ -62,7 +61,7 @@ func _throw_ball() -> void:
 	ball.set_global_position(originalPos)
 	
 	# throw ball
-	ball._throw(throwPower, 1)
+	ball._throw(throwPower, 10)
 	
 	# get a new ball
 	var newBall = ballScene.instantiate()
