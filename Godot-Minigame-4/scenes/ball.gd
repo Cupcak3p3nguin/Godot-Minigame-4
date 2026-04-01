@@ -10,7 +10,9 @@ func _throw(power: float, zFacing: float) -> void:
 	linear_velocity += Vector3(0, power/5.0, power*zFacing)
 
 func _pickup() -> void:
-	
+	print("pick up")
+
+# step 5
 	on_ground = false
 # step 10
 	position = hold_position
