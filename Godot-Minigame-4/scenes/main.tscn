@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bljxf08q262h5"]
+[gd_scene load_steps=6 format=3 uid="uid://bljxf08q262h5"]
 
 [ext_resource type="PackedScene" uid="uid://dyj54usnh5n82" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dn7ae06yhyubs" path="res://scenes/level.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://b3p6n0jqctbar" path="res://scenes/npc.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://w3p6fdp1q6jk" path="res://scenes/ball.tscn" id="4_jyhfs"]
-[ext_resource type="Script" uid="uid://cbfcix635yjpq" path="res://scenes/ball.gd" id="5_tbgi4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jyhfs"]
 font_size = 30
@@ -26,7 +25,15 @@ transform = Transform3D(1, 0, 0, 0, 0.3097971, 0.9508027, 0, -0.9508027, 0.30979
 
 [node name="NPC" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9940548, 1.5117404, -4.794055)
-throwFrequency = 3.0
+
+[node name="NPC" parent="NPC" instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8018265, -0.02598834, 0.34371567)
+throwPower = 2.0
+
+[node name="NPC" parent="NPC/NPC" instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8018265, 0.0060813427, 0.34371567)
+speed = 3.0
+throwFrequency = 2.0
 
 [node name="UI" type="BoxContainer" parent="."]
 offset_right = 323.0
@@ -45,12 +52,30 @@ label_settings = SubResource("LabelSettings_jyhfs")
 
 [node name="Ball4" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.032008, 0.75, 5.703159)
-script = ExtResource("5_tbgi4")
+hold_position = Vector3(1, 0, 0)
 
 [node name="Ball2" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8009377, 0.75, 5.9645324)
-script = ExtResource("5_tbgi4")
+hold_position = Vector3(1, 0, 0)
+
+[node name="Ball2" parent="Ball2" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5218191, 0.0370934, -1.8495631)
+
+[node name="Ball2" parent="Ball2/Ball2" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7598886, 0.0370934, -1.8495631)
+
+[node name="Ball2" parent="Ball2/Ball2/Ball2" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.734973, 0.0370934, 0.37495613)
+
+[node name="Ball2" parent="Ball2/Ball2/Ball2/Ball2" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.734973, 0.0370934, -0.8821826)
+
+[node name="Ball2" parent="Ball2/Ball2/Ball2/Ball2/Ball2" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6298208, 0.0370934, 0.8712282)
 
 [node name="Ball3" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5218492, 0.75, 7.0957203)
-script = ExtResource("5_tbgi4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5218492, 0.75, 4.41759)
+hold_position = Vector3(1, 0, 0)
+
+[node name="Ball4" parent="Ball3" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.887733, 0.03875351, 0.145648)
